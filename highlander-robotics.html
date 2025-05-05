@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="control-systems.css" />
+  <link rel="stylesheet" href="highlander-robotics.css" />
   <title>Alexander Totah | Highlander Combat Robotics</title>
   
   <!-- Font Awesome for icons -->
@@ -71,7 +71,7 @@
               <h3>Co-Founder and Club President</h3>
               <p class="company">Highlander Combat Robotics, UCR</p>
             </div>
-            <p class="period">May 2023 – Present</p>
+            <p class="period">May 2023 - May 2025</p>
           </div>
           
           <div class="experience-content">
@@ -79,23 +79,24 @@
             <p>As the Co-Founder and President of Highlander Combat Robotics at UC Riverside, I've led the development of a thriving robotics community focused on designing, building, and competing with combat robots. Our organization provides engineering students with hands-on experience in mechanical design, electrical systems, and programming while fostering teamwork and project management skills.</p>
             
             <div class="project-gallery">
-              <h4>Team Photos</h4>
+              <h4>Working Photos</h4>
+              <p>Our members worked hard year round to develop their robots!</p>
               <div class="image-grid">
                 <div class="gallery-image">
-                  <img src="./images/HCR1.jpg" alt="Highlander Combat Robotics team photo" class="gallery-img">
-                  <p class="image-caption">HCR founding team members at our first official club meeting</p>
+                  <img src="./images/HCR1.jpg" alt="Highlander Combat Robotics team photo" class="gallery-img"style="width: 500%; height: auto;">
+                  <p class="image-caption">Helping my team construct their robot in early development</p>
                 </div>
                 <div class="gallery-image">
-                  <img src="./images/HCR2.jpg" alt="Robot construction workshop" class="gallery-img">
-                  <p class="image-caption">Leading a workshop on robot design and construction techniques</p>
+                    <img src="./images/HCR3.jpg" alt="Competition arena setup" class="gallery-img"style="width: 500%; height: auto;">
+                    <p class="image-caption">Setting up our custom-built combat arena for the annual competition</p>
+                  </div>
+                <div class="gallery-image">
+                  <img src="./images/HCR2.jpg" alt="Robot construction workshop" class="gallery-img"style="width: 500%; height: auto;">
+                  <p class="image-caption">Team configuring robot wiring</p>
                 </div>
                 <div class="gallery-image">
-                  <img src="./images/HCR3.jpg" alt="Competition arena setup" class="gallery-img">
-                  <p class="image-caption">Setting up our custom-built combat arena for the annual competition</p>
-                </div>
-                <div class="gallery-image">
-                  <img src="./images/HCR4.jpg" alt="Robot in action" class="gallery-img">
-                  <p class="image-caption">One of our heavyweight robots during a competition match</p>
+                  <img src="./images/HCR6.jpg" alt="Robot in action" class="gallery-img" style="width: 500%; height: auto;">
+                  <p class="image-caption">Board members helping arena cunstruction team</p>
                 </div>
               </div>
             </div>
@@ -146,156 +147,7 @@
               </div>
             </div>
             
-            <h4>Engineering Space Creation</h4>
-            <p>Led the collaborative effort to establish a dedicated engineering workspace on campus, partnering with five other student organizations. This initiative resulted in a shared facility equipped with essential tools and resources for robot construction and testing.</p>
             
-            <div class="image-grid">
-              <div class="gallery-image">
-                <img src="./images/HCR9.jpg" alt="Engineering workspace" class="gallery-img">
-                <p class="image-caption">The collaborative engineering workspace established for student organizations</p>
-              </div>
-              <div class="gallery-image">
-                <img src="./images/HCR10.jpg" alt="Tool organization" class="gallery-img">
-                <p class="image-caption">Tool organization and equipment storage in the shared workspace</p>
-              </div>
-            </div>
-            
-            <h4>Technical Implementation Details</h4>
-            <div class="details-grid">
-              <div class="detail-card">
-                <h5>Robot Control Systems</h5>
-                <p>Our robots feature Arduino-based control systems with custom firmware for precise motor control and telemetry. Teams implement different control strategies based on their robot design, from simple dual-joystick controls to more complex behavior-based systems.</p>
-                <div class="code-example">
-                  <pre>// Arduino Motor Control Example
-#include <Servo.h>
-
-// Define motor control pins
-#define LEFT_MOTOR_PIN 9
-#define RIGHT_MOTOR_PIN 10
-#define WEAPON_MOTOR_PIN 11
-#define SAFETY_PIN 2
-
-// Create servo objects for ESC control
-Servo leftMotor;
-Servo rightMotor;
-Servo weaponMotor;
-
-// Safety system variables
-bool safetyEnabled = true;
-unsigned long lastHeartbeat = 0;
-const unsigned long HEARTBEAT_TIMEOUT = 500; // ms
-
-void setup() {
-  Serial.begin(115200);
-  
-  // Attach motor controllers
-  leftMotor.attach(LEFT_MOTOR_PIN);
-  rightMotor.attach(RIGHT_MOTOR_PIN);
-  weaponMotor.attach(WEAPON_MOTOR_PIN);
-  
-  // Configure safety pin as input with pullup
-  pinMode(SAFETY_PIN, INPUT_PULLUP);
-  
-  // Initialize motors to neutral
-  leftMotor.write(90);
-  rightMotor.write(90);
-  weaponMotor.write(90);
-  
-  Serial.println("Combat robot control system initialized");
-}</pre>
-                </div>
-              </div>
-              <div class="detail-card">
-                <h5>Safety System Design</h5>
-                <p>The safety system incorporates multiple layers of protection, including physical kill switches, software timeouts, and remote emergency stops. Each robot's power system includes current monitoring and thermal protection to prevent battery failures.</p>
-                <div class="code-example">
-                  <pre>// Safety System Implementation
-void loop() {
-  // Check physical safety switch
-  if (digitalRead(SAFETY_PIN) == LOW) {
-    emergencyStop("Physical kill switch activated");
-    return;
-  }
-  
-  // Check for communication heartbeat
-  if (millis() - lastHeartbeat > HEARTBEAT_TIMEOUT) {
-    emergencyStop("Communication timeout");
-    return;
-  }
-  
-  // Process incoming commands if safety checks pass
-  if (Serial.available() > 0) {
-    processCommand();
-  }
-}
-
-void emergencyStop(String reason) {
-  // Immediately stop all motors
-  leftMotor.write(90);
-  rightMotor.write(90);
-  weaponMotor.write(90);
-  
-  // Log the emergency stop event
-  Serial.print("EMERGENCY STOP: ");
-  Serial.println(reason);
-  
-  // Require manual reset after emergency stop
-  safetyEnabled = false;
-  
-  // Visual indicator (if LED is connected)
-  while (!safetyEnabled) {
-    // Blink LED to indicate emergency stop mode
-    // Wait for manual reset signal
-  }
-}</pre>
-                </div>
-              </div>
-            </div>
-            
-            <h4>Challenges and Solutions</h4>
-            <div class="challenges-section">
-              <div class="challenge-item">
-                <h5>Limited Budget</h5>
-                <p>Challenge: Building combat robots with limited initial funding.</p>
-                <p>Solution: Developed partnerships with local machine shops for material donations, implemented a component recycling program, and created tiered robot designs that allowed teams to start with lower-cost platforms and upgrade incrementally.</p>
-              </div>
-              <div class="challenge-item">
-                <h5>Varied Member Experience</h5>
-                <p>Challenge: Accommodating members with widely varying technical backgrounds and skill levels.</p>
-                <p>Solution: Created a mentorship program pairing experienced members with newcomers, developed progressive workshop series starting from fundamentals, and structured teams to include members with complementary skills.</p>
-              </div>
-              <div class="challenge-item">
-                <h5>University Regulations</h5>
-                <p>Challenge: Navigating university safety requirements and space restrictions for combat robotics.</p>
-                <p>Solution: Collaborated with faculty advisors to develop comprehensive safety protocols, designed a modular arena with enhanced safety features, and established clear documentation for risk assessment and mitigation.</p>
-              </div>
-            </div>
-            
-            <div class="key-skills">
-              <h4>Key Skills Applied</h4>
-              <div class="skills-tags">
-                <span class="skill-tag">Leadership</span>
-                <span class="skill-tag">Project Management</span>
-                <span class="skill-tag">Fundraising</span>
-                <span class="skill-tag">SolidWorks</span>
-                <span class="skill-tag">Arduino</span>
-                <span class="skill-tag">Motor Control</span>
-                <span class="skill-tag">Safety Systems</span>
-                <span class="skill-tag">Event Planning</span>
-                <span class="skill-tag">Team Building</span>
-                <span class="skill-tag">CAD Design</span>
-                <span class="skill-tag">Electrical Systems</span>
-                <span class="skill-tag">Mechanical Fabrication</span>
-              </div>
-            </div>
-            
-            <div class="back-to-experience">
-              <a href="index.html#experience" class="back-link"><i class="fas fa-arrow-left"></i> Back to Resume</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 
   <!-- Footer -->
