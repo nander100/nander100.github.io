@@ -53,7 +53,6 @@
         <li><a href="index.html#publications" class="nav-link"><i class="fas fa-book-open"></i> Publications</a></li>
         <li><a href="index.html#education" class="nav-link"><i class="fas fa-graduation-cap"></i> Education</a></li>
         <li><a href="index.html#skills" class="nav-link"><i class="fas fa-microchip"></i> Skills</a></li>
-        <li><a href="#" class="nav-link active"><i class="fas fa-cogs"></i> Control Systems</a></li>
       </ul>
     </div>
   </nav>
@@ -76,138 +75,49 @@
           
           <div class="experience-content">
             <h4>Project Overview</h4>
-            <p>As a Systems and Control Engineer at UCR's Robotics and Medical Systems Lab, I specialized in the development of precision control systems for medical robotics applications, focusing on MRI-compatible steerable needles and biopsy robots.</p>
+            <p>As a Systems and Control Engineer at UCR's Robotics and Medical Systems Lab, I specialized in the development of precision control systems for medical robotics applications, focusing on MRI-compatible steerable needles and biopsy robots.
+                Since the robot needed to be MRI MRI-compatible, there could be no metals or electronics in the opperating room. We decided to use fiber optics and pnumatics to control the robot.
+                The air would be compressed by a stepper motor which would correspond to a certian ammout of bend for the needle. I was tasked with calibrating the sensor and developing a control system to carry out this task.
+            </p>
             
             <h4>Technical Achievements</h4>
             <ul class="detailed-list">
               <li>
-                <strong>PID Control System Development:</strong>
-                <p>Designed and implemented a high-performance PID control system using MATLAB for precise steering of medical needles. The system achieved sub-millisecond latency (< 1ms) and maintained consistent performance during extensive testing simulations.</p>
-              </li>
-              <li>
-                <strong>Arduino-Based Control Interface:</strong>
-                <p>Created an intuitive user interface based on Arduino microcontrollers that simplified the remote operation of an MRI-compatible biopsy robot. The interface reduced user error by 35% compared to previous control methods and received positive feedback from medical professionals during preliminary testing.</p>
+                <strong>PID Integration:</strong>
+                <p>Worked with a PhD student (<a href="https://scholar.google.com/citations?user=YvIkwPQAAAAJ&hl=en">Boshen Qi</a>) and a postdoc researcher (<a href="https://scholar.google.com/citations?user=MgInv7wAAAAJ&hl=en">Sarvesh Saini</a>) 
+                to develop a PID controler to control the bend of a steerable robot.
+                </p>
               </li>
               <li>
                 <strong>Fiber Optic Sensor Calibration:</strong>
-                <p>Calibrated and fine-tuned MRI-compatible fiber optic proximity sensors using SIMULINK to measure needle deflection with precision better than 0.5mm. This level of accuracy is critical for medical procedures requiring high precision in tissue targeting.</p>
-              </li>
-              <li>
-                <strong>Signal Processing:</strong>
-                <p>Implemented real-time signal processing algorithms to filter sensor noise and improve position estimation, resulting in a 40% reduction in measurement error and enhanced system reliability.</p>
-              </li>
-              <li>
-                <strong>System Integration:</strong>
-                <p>Integrated control systems with mechanical components and sensors, ensuring seamless operation between software and hardware elements. Developed comprehensive testing protocols to validate system performance under various operating conditions.</p>
+                <p>Calibrated and fine-tuned MRI-compatible fiber optic proximity sensors using SIMULINK to measure needle deflection with precision better than 0.5mm using a stepper motor. This level of accuracy is critical for medical procedures requiring high precision in tissue targeting.</p>
               </li>
             </ul>
             
             <h4>Research Contributions</h4>
-            <p>My work contributed directly to the publication "An MRI-conditional flexible endoscopic robot with a hydraulic tendon-driven actuation system" in the Journal of Medical Robotics Research. The control systems I developed formed a critical component of the robot's functionality, enabling precise manipulation in the MRI environment.</p>
+            <p>My work contributed directly to the publication "An MRI-conditional flexible endoscopic robot with a hydraulic tendon-driven actuation system" in 
+                the Journal of Medical Robotics Research. The control systems I developed as well as my sensor calibration formed a critical component of the robot's 
+                functionality, enabling precise manipulation in the MRI environment.</p>
+
+            <p>The overall, I found that the sensor was most consistent at 20.0mm to 45.0mm. This was used as a crucial component for the feedback mechanism of the PID controller.</p>
             
             <div class="project-gallery">
-              <h4>Project Images</h4>
-              <div class="image-grid">
-                <div class="gallery-placeholder">
-                  <p><i class="fas fa-image"></i> Control system diagram</p>
+                <h4>Project Images</h4>
+                <div class="image-grid">
+                  <figure class="gallery-item">
+                    <img src="./images/MATLAB1.png" alt=" Ouput across Multiple tests">
+                    <figcaption>Control system diagram</figcaption>
+                  </figure>
+                  <figure class="gallery-item">
+                    <img src="./images/MATLAB2.png" alt="MRI-compatible hardware">
+                    <figcaption>MRI-compatible hardware</figcaption>
+                  </figure>
+                  <figure class="gallery-item">
+                    <img src="./images/MATLAB3.png" alt="Sensor calibration setup">
+                    <figcaption>Sensor calibration setup</figcaption>
+                  </figure>
                 </div>
-                <div class="gallery-placeholder">
-                  <p><i class="fas fa-image"></i> MRI-compatible hardware</p>
-                </div>
-                <div class="gallery-placeholder">
-                  <p><i class="fas fa-image"></i> Sensor calibration setup</p>
-                </div>
-                <div class="gallery-placeholder">
-                  <p><i class="fas fa-image"></i> Testing environment</p>
-                </div>
-              </div>
-            </div>
-            
-            <h4>Technical Implementation Details</h4>
-            <div class="details-grid">
-              <div class="detail-card">
-                <h5>PID Control Implementation</h5>
-                <p>The PID controller was implemented using MATLAB and tuned through an iterative process. Initial parameters were determined using the Ziegler-Nichols method and refined through simulation testing. The final values achieved optimal performance with minimal overshoot and settling time.</p>
-                <div class="code-example">
-                  <pre>% MATLAB PID Implementation
-Kp = 0.75;  % Proportional gain
-Ki = 0.25;  % Integral gain
-Kd = 0.1;   % Derivative gain
-Ts = 0.001; % Sampling time (1ms)
-
-PID_Controller = pid(Kp, Ki, Kd);
-PID_Controller.Ts = Ts;  % Discrete controller
-</pre>
-                </div>
-              </div>
-              <div class="detail-card">
-                <h5>Arduino Control Interface</h5>
-                <p>The Arduino interface used serial communication to connect with the main control system. Custom PCB boards were designed to interface with the MRI-compatible sensors, with isolation components to ensure safety in the MRI environment.</p>
-                <div class="code-example">
-                  <pre>// Arduino Code Excerpt
-void setup() {
-  Serial.begin(115200);
-  // Configure I/O pins
-  pinMode(MOTOR_PIN, OUTPUT);
-  pinMode(SENSOR_PIN, INPUT);
-  // Initialize filters
-  initKalmanFilter();
-}
-
-void loop() {
-  // Read sensor value
-  int sensorValue = analogRead(SENSOR_PIN);
-  // Apply Kalman filter to reduce noise
-  float filteredValue = updateKalmanFilter(sensorValue);
-  // Convert to physical position (mm)
-  float position = convertToPosition(filteredValue);
-  // Send to control system
-  Serial.print(position);
-  Serial.print(',');
-  // Additional code...
-}
-</pre>
-                </div>
-              </div>
-            </div>
-            
-            <h4>Challenges and Solutions</h4>
-            <div class="challenges-section">
-              <div class="challenge-item">
-                <h5>MRI Compatibility</h5>
-                <p>Challenge: Developing control systems that function in high magnetic fields without causing image artifacts.</p>
-                <p>Solution: Used fiber optic sensors and non-magnetic materials. Control electronics were positioned outside the MRI room with long optical cables for signal transmission.</p>
-              </div>
-              <div class="challenge-item">
-                <h5>Latency Requirements</h5>
-                <p>Challenge: Medical procedures required sub-millisecond response times for safe operation.</p>
-                <p>Solution: Optimized code execution paths and implemented a real-time operating system for critical control tasks. Used interrupt-driven programming to ensure consistent timing.</p>
-              </div>
-              <div class="challenge-item">
-                <h5>Sensor Accuracy</h5>
-                <p>Challenge: Achieving sub-millimeter accuracy with sensors affected by environmental factors.</p>
-                <p>Solution: Developed a multi-point calibration protocol and implemented digital filtering algorithms to compensate for temperature drift and noise.</p>
-              </div>
-            </div>
-            
-            <div class="key-skills">
-              <h4>Key Skills Applied</h4>
-              <div class="skills-tags">
-                <span class="skill-tag">PID Control</span>
-                <span class="skill-tag">MATLAB</span>
-                <span class="skill-tag">SIMULINK</span>
-                <span class="skill-tag">Arduino</span>
-                <span class="skill-tag">Sensor Calibration</span>
-                <span class="skill-tag">Signal Processing</span>
-                <span class="skill-tag">Medical Robotics</span>
-                <span class="skill-tag">System Integration</span>
-                <span class="skill-tag">Real-time Systems</span>
-                <span class="skill-tag">PCB Design</span>
-                <span class="skill-tag">MRI Compatibility</span>
-                <span class="skill-tag">Kalman Filtering</span>
-              </div>
-            </div>
-            
+              </div>            
             <div class="back-to-experience">
               <a href="index.html#experience" class="back-link"><i class="fas fa-arrow-left"></i> Back to Resume</a>
             </div>
