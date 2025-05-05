@@ -52,6 +52,7 @@
         <li><a href="#publications" class="nav-link"><i class="fas fa-book-open"></i> Publications</a></li>
         <li><a href="#education" class="nav-link"><i class="fas fa-graduation-cap"></i> Education</a></li>
         <li><a href="#skills" class="nav-link"><i class="fas fa-microchip"></i> Skills</a></li>
+        <li><a href="references.html" class="nav-link"><i class="fas fa-address-card"></i> References</a></li>
       </ul>
     </div>
   </nav>
@@ -126,7 +127,7 @@
         <div class="experience-item">
           <div class="experience-header">
             <div>
-              <h3>Co-Founder and Club President</h3>
+              <h3><a href="highlander-robotics.html">Co-Founder and Club President</a></h3>
               <p class="company"> <a href = "https://www.instagram.com/combatroboticsucr/" target="_blank">Highlander Combat Robotics, UCR</a></p>
             </div>
             <p class="period">May 2023 – Present</p>
@@ -337,40 +338,52 @@
     
     // Highlight active nav section on scroll
     document.addEventListener('DOMContentLoaded', function() {
-      const sections = document.querySelectorAll('section');
-      const navLinks = document.querySelectorAll('.nav-link');
-      
-      function setActiveLink() {
-        let current = '';
-        
-        sections.forEach(section => {
-          const sectionTop = section.offsetTop;
-          if (scrollY >= sectionTop - 100) {
-            current = section.getAttribute('id');
-          }
-        });
-        
-        navLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('href').substring(1) === current) {
-            link.classList.add('active');
-          }
-        });
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('.nav-link');
+  
+  // Highlight active nav section on scroll
+  function setActiveLink() {
+    let current = '';
+    
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      if (scrollY >= sectionTop - 100) {
+        current = section.getAttribute('id');
       }
-      
-      window.addEventListener('scroll', setActiveLink);
-      
-      // Smooth scroll for navigation links
-      navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-          e.preventDefault();
-          const targetId = this.getAttribute('href');
-          const targetSection = document.querySelector(targetId);
+    });
+    
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href').substring(1) === current) {
+        link.classList.add('active');
+      }
+    });
+  }
+  
+  window.addEventListener('scroll', setActiveLink);
+  
+  // Smooth scroll for navigation links
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+
+      // Only handle internal links (those starting with "#")
+      if (targetId.startsWith('#')) {
+        e.preventDefault();
+        const targetSection = document.querySelector(targetId);
+
+        // Check if the section exists before trying to scroll
+        if (targetSection) {
           window.scrollTo({
             top: targetSection.offsetTop,
             behavior: 'smooth'
           });
-        });
-      });
+        } else {
+          console.error(`No section found with ID: ${targetId}`);
+        }
+      }
+      // External or non-anchor links like "references.html" are left alone
     });
+  });
+});
   </script>

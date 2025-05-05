@@ -1,0 +1,208 @@
+/* References Page Specific Styles */
+
+.references-intro {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--gray-200);
+  }
+  
+  .references-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .reference-card {
+    border: 1px solid var(--gray-200);
+    border-radius: 0.5rem;
+    padding: 1.25rem;
+    background-color: var(--gray-50);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .reference-card:hover {
+    box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .reference-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .reference-avatar {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background-color: var(--blue-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    color: var(--blue-700);
+  }
+  
+  .reference-avatar i {
+    font-size: 2rem;
+  }
+  
+  .reference-info h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--blue-900);
+    margin-bottom: 0.25rem;
+  }
+  
+  .reference-title {
+    color: var(--blue-700);
+    font-weight: 500;
+    font-size: 0.9375rem;
+    margin-bottom: 0.125rem;
+  }
+  
+  .reference-organization {
+    color: var(--gray-600);
+    font-size: 0.875rem;
+  }
+  
+  .reference-relationship {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--gray-200);
+  }
+  
+  .reference-relationship p {
+    margin-bottom: 0.5rem;
+    color: var(--gray-700);
+    font-size: 0.9375rem;
+  }
+  
+  .reference-contact p {
+    color: var(--gray-700);
+    font-size: 0.9375rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .reference-contact i {
+    color: var(--blue-700);
+    margin-right: 0.5rem;
+    width: 1rem;
+    text-align: center;
+  }
+  
+  .testimonials-section {
+    margin-top: 3rem;
+  }
+  
+  .testimonials-section h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--blue-900);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--gray-200);
+  }
+  
+  .testimonial-item {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--gray-200);
+  }
+  
+  .testimonial-item:last-child {
+    margin-bottom: 1rem;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+  
+  .testimonial-quote {
+    position: relative;
+    padding: 1.5rem;
+    background-color: var(--blue-50);
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .testimonial-quote p {
+    color: var(--gray-800);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    margin: 0 1.5rem;
+  }
+  
+  .testimonial-quote i.fa-quote-left {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    color: var(--blue-300);
+    font-size: 1rem;
+  }
+  
+  .testimonial-quote i.fa-quote-right {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    color: var(--blue-300);
+    font-size: 1rem;
+  }
+  
+  .testimonial-author {
+    padding-left: 1.5rem;
+  }
+  
+  .testimonial-author p {
+    margin-bottom: 0.25rem;
+    color: var(--gray-700);
+    font-size: 0.9375rem;
+  }
+  
+  .testimonial-author p:first-child {
+    color: var(--blue-900);
+  }
+  
+  .references-note {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: var(--gray-100);
+    border-radius: 0.5rem;
+    color: var(--gray-700);
+    font-size: 0.9375rem;
+  }
+  
+  .references-note i {
+    color: var(--blue-700);
+    margin-right: 0.5rem;
+  }
+  
+  /* Media queries */
+  @media (min-width: 768px) {
+    .references-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .testimonial-quote p {
+      font-size: 1rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .testimonial-item {
+      display: flex;
+      align-items: flex-start;
+    }
+    
+    .testimonial-quote {
+      flex: 4;
+      margin-bottom: 0;
+      margin-right: 1.5rem;
+    }
+    
+    .testimonial-author {
+      flex: 1;
+      padding-left: 0;
+      padding-top: 1rem;
+    }
+  }
